@@ -2,14 +2,12 @@ let button = document.querySelector("#searchForm");
 let year = document.querySelector("#yearSearch");
 let race = document.querySelector("#raceSearch");
 let table = document.querySelector("tbody");
-let audio = document.createAttribute("audio");
-audio.src = "static/audio/vroom.wav";
+let audio = new Audio("static/audio/vroom.wav");
 
 button.addEventListener( 'submit', ( e ) => {
     // prevent page refresh
     e.preventDefault();
-    audio.addEventListener( "oncanplay", function () {
-    })
+    audio.play()
     fetch ( `https://ergast.com/api/f1/${year.value}/${race.value}/driverStandings.json` )
         .then (res => res.json() )
         .then (data => {
